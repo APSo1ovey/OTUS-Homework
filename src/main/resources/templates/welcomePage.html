@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:utext="${title}"></title>
+</head>
+
+<body>
+
+<!-- Include _menu.html -->
+<th:block th:include="/_menu"></th:block>
+
+<h2>Social Network Project : <span th:utext="HolaAmigo"></span></h2>
+<table>
+    <tr>
+        <td><a if="${#request.userPrincipal == null}" th:href="@{/registration}">Registration</a></td>
+    </tr>
+    <tr>
+        <td><a if="${#request.userPrincipal == null}" th:href="@{/userInfo}">Login</a></td>
+    </tr>
+</table>
+
+</body>
+</html>
