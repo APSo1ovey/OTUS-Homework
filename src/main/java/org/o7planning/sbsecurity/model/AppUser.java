@@ -13,6 +13,9 @@ public class AppUser {
     private String userCompany;
 
 
+    public AppUser() {
+    }
+
     public AppUser(Long userId, String userLogin, String encrytedPassword, String userName, Date userBDay, String userHometown, String userCompany) {
         this.userId = userId;
         this.userLogin = userLogin;

@@ -1,5 +1,7 @@
 package org.o7planning.sbsecurity.service;
 
+import org.o7planning.sbsecurity.dao.AppUserDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
@@ -17,34 +19,19 @@ import org.o7planning.sbsecurity.mapper.AppUserMapper;
 public class UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final SqlSessionTemplate sqlSessionTemplate;
-
-    public UserService(BCryptPasswordEncoder bCryptPasswordEncoder, SqlSessionTemplate sqlSessionTemplate) {
+    private final AppUserDAO appUserDAO;
+    public UserService(BCryptPasswordEncoder bCryptPasswordEncoder, AppUserDAO appUserDAO) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-        this.sqlSessionTemplate = sqlSessionTemplate;
+        this.appUserDAO = appUserDAO;
     }
 
     public AppUser findUserByUserName(String username) throws Exception {
-        AppUser userLogin = null;
-        try (SqlSession sqlSession = sqlSessionTemplate.getSqlSessionFactory().openSession()) {
-            AppUserMapper AppUserMapper = sqlSession.getMapper(AppUserMapper.class);
-            userLogin = AppUserMapper.mapRow(userLogin);
-
-        }
-        return userLogin;
+        return appUserDAO.findUserAccount(username);
     }
-/*
+
     public int saveUser(AppUser user) throws Exception{
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setEnabled(true);
-        int result = 0;
-        try (SqlSession sqlSession = sqlSessionTemplate.getSqlSessionFactory().openSession()) {
-            AppUserMapper userMapper = sqlSession.getMapper(AppUserMapper.class);
-            result = userMapper.saveUser(user);
-
-        }
-        return result;
+        user.setEncrytedPassword(bCryptPasswordEncoder.encode(user.getEncrytedPassword()));
+        return appUserDAO.saveUser(user);
     }
 
- */
 }

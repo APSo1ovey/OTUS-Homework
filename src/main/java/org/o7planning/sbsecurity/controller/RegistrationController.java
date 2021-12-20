@@ -21,18 +21,18 @@ public class RegistrationController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    @RequestMapping(value = "/adduser", method = RequestMethod.GET)
     public ModelAndView register(){
         ModelAndView modelAndView = new ModelAndView();
         AppUser user = new AppUser();
-        modelAndView.addObject("user", userLogin);
+        modelAndView.addObject("user", user);
         modelAndView.setViewName("registration");
         return modelAndView;
     }
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    @RequestMapping(value = "/adduser", method = RequestMethod.POST)
     public ModelAndView createNewUser(@Valid AppUser user, BindingResult bindingResult) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        AppUser userExists = AppUserDAO.findUserAccount(user.getUsername());
+        AppUser userExists = userService.findUserByUserName(user.getUserLogin());
 //        User userExists = user;
         if (userExists != null) {
             bindingResult

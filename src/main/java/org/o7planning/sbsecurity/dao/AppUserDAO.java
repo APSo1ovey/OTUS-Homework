@@ -26,11 +26,14 @@ public class AppUserDAO extends JdbcDaoSupport {
         Object[] params = new Object[] { userLogin };
         AppUserMapper mapper = new AppUserMapper();
         try {
-            AppUser userInfo = this.getJdbcTemplate().queryForObject(sql, params, mapper);
-            return userInfo;
+            return this.getJdbcTemplate().queryForObject(sql, mapper, params);
         } catch (EmptyResultDataAccessException e) {
             return null;
         }
     }
 
+    public int saveUser(AppUser user) throws Exception{
+        String sql = "insert into table (field1, field2, field3) VALUES(?,?,?,)";
+        return this.getJdbcTemplate().update(sql,user.getUserLogin(), user.getUserName(), user.getUserHometown());
+    }
 }
