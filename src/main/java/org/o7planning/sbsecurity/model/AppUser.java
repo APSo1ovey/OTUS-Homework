@@ -12,7 +12,6 @@ public class AppUser {
     private String userHometown;
     private String userCompany;
 
-
     public AppUser() {
     }
 

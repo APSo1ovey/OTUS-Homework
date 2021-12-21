@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.o7planning.sbsecurity.model.AppUser;
-import org.o7planning.sbsecurity.dao.AppUserDAO;
-import org.o7planning.sbsecurity.mapper.AppUserMapper;
 import org.o7planning.sbsecurity.service.UserService;
 
 import javax.validation.Valid;
