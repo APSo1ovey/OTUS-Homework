@@ -1,8 +1,14 @@
 package org.o7planning.sbsecurity.model;
 
+import lombok.*;
+import java.io.Serializable;
 import java.sql.Date;
 
-public class AppUser {
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
+public class AppUser{
 
     private Long userId;
     private String userLogin;

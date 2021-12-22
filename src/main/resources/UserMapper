@@ -11,7 +11,7 @@
         <result column="userCompany" property="userCompany" />
     </resultMap>
     <insert id="saveUser" parameterType="org.o7planning.sbsecurity.model.AppUser">
-        INSERT INTO APP_USER
+        INSERT INTO mydatabase.APP_USER
         (
             user_id,
             user_login,
@@ -22,13 +22,13 @@
             user_company
         ) VALUES
         (
-            #{user_id, jdbcType=BIGINT},
-            #{user_login, jdbcType=CHAR},
-            #{encryted_password, jdbcType=CHAR},
-            #{user_name, jdbcType=CHAR},
-            #{user_birthday, jdbcType=DATE},
-            #{user_hometown, jdbcType=CHAR},
-            #{user_company, jdbcType=CHAR}
+            #{id, jdbcType=BIGINT},
+            #{userLogin, jdbcType=CHAR},
+            #{encrytedPassword, jdbcType=CHAR},
+            #{userName, jdbcType=CHAR},
+            #{userBDay, jdbcType=DATE},
+            #{userHometown, jdbcType=CHAR},
+            #{userCompany, jdbcType=CHAR}
         )
     </insert>
 </mapper>

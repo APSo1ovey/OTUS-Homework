@@ -2,7 +2,7 @@ package org.o7planning.sbsecurity.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.o7planning.sbsecurity.model.AppUser;
-import org.o7planning.sbsecurity.dao.AppUserDAO;
+import org.o7planning.sbsecurity.service.UserService;
 
 import java.util.List;
 
