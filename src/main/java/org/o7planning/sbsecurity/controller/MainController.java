@@ -19,13 +19,6 @@ public class MainController {
         return "welcomePage";
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registrationPage(Model model) {
-        model.addAttribute("title", "Registration");
-
-        return "registrationPage";
-    }
-
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String adminPage(Model model, Principal principal) {
 

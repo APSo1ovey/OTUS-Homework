@@ -1,18 +1,11 @@
 package org.o7planning.sbsecurity.service;
 
 import org.o7planning.sbsecurity.dao.AppUserDAO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.apache.ibatis.session.ExecutorType;
-import org.apache.ibatis.session.SqlSession;
-import org.mybatis.spring.SqlSessionTemplate;
+import org.o7planning.sbsecurity.model.AppUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import org.o7planning.sbsecurity.model.AppUser;
-import org.o7planning.sbsecurity.mapper.UserMapper;
+import org.springframework.stereotype.Service;
 
 
 @Service

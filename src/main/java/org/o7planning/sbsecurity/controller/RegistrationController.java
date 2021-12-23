@@ -19,12 +19,13 @@ public class RegistrationController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/adduser", method = RequestMethod.GET)
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView register(){
         ModelAndView modelAndView = new ModelAndView();
         AppUser user = new AppUser();
+        modelAndView.addObject("title", "Registration");
         modelAndView.addObject("user", user);
-        modelAndView.setViewName("registration");
+        modelAndView.setViewName("registrationPage");
         return modelAndView;
     }
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
@@ -38,12 +39,12 @@ public class RegistrationController {
                             "Пользователь с таким именем уже существует");
         }
         if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("registration");
+            modelAndView.setViewName("registrationPage");
         } else {
             userService.saveUser(user);
             modelAndView.addObject("successMessage", "Пользователь зарегистрирован");
             modelAndView.addObject("user", new AppUser());
-            modelAndView.setViewName("registration");
+            modelAndView.setViewName("registrationPage");
 
         }
         return modelAndView;
