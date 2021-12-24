@@ -17,7 +17,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-             <form autocomplete="off" action="#" th:action="@{/adduser}"
+            <form autocomplete="off" action="#" th:action="@{/adduser}"
                   th:object="${user}" method="post" class="form-horizontal"
                   role="form">
                 <h2>Enter your personal information:</h2>
@@ -29,9 +29,9 @@
                         <input type="text" th:field="*{userLogin}" placeholder="Login"
                                class="form-control"/>
 
-                        <br><label>Пароль</label><br>
+                        <br><label>Password:</label><br>
                         <input type="password" th:field="*{encrytedPassword}"
-                               placeholder="Пароль" class="form-control"/> <label
+                               placeholder="Password" class="form-control"/> <label
                             th:if="${#fields.hasErrors('encrytedPassword')}" th:errors="*{encrytedPassword}"
                             class="validation-message"></label>
 
@@ -41,11 +41,20 @@
                         <input type="text" th:field="*{userName}" placeholder="Name"
                                class="form-control"/>
                     </div>
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <label>Gender:</label><br>
+                            <select th:field="*{userGender}" style="width: 150px">
+                                <option th:value="0" th:text="Male"></option>
+                                <option th:value="1" th:text="Female"></option>
+                            </select>
+                            <label th:if="${#fields.hasErrors('userGender')}" th:errors="*{userGender}" class="validation-message"></label>
+                        </div>
                     <div class="col-sm-9">
                         <label th:if="${#fields.hasErrors('userBDay')}" th:errors="*{userBDay}"
                                class="validation-message"></label>
                         <label>Birthday:</label><br>
-                        <input type="text" th:field="*{userBDay}"
+                        <input type="date" th:field="*{userBDay}"
                                placeholder="Birthday" class="form-control"/>
                     </div>
                 </div>
@@ -67,17 +76,18 @@
                                placeholder="Company" class="form-control"/>
                     </div>
                 </div>
+                    <br>
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <button type="submit" class="btn btn-primary btn-block">Зарегистрировать</button>
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        <button type="reset" class="btn btn-primary btn-block">Reset</button>
                     </div>
                 </div>
-                <h2><span class="text-success" th:utext="${successMessage}"></span></h2>
+                <h2><span class="text-success" th:utext="${successMessage}" th:href="@{/userInfo}"></span></h2>
             </form>
         </div>
     </div>
 </div>
-
 </body>
 
 </html>

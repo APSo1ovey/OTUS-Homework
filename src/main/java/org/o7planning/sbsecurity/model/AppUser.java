@@ -1,19 +1,15 @@
 package org.o7planning.sbsecurity.model;
 
-import lombok.*;
-import java.io.Serializable;
+
 import java.sql.Date;
 
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
 public class AppUser{
 
     private Long userId;
     private String userLogin;
     private String encrytedPassword;
     private String userName;
+    private Integer userGender;
     private Date userBDay;
     private String userHometown;
     private String userCompany;
@@ -21,11 +17,12 @@ public class AppUser{
     public AppUser() {
     }
 
-    public AppUser(Long userId, String userLogin, String encrytedPassword, String userName, Date userBDay, String userHometown, String userCompany) {
+    public AppUser(Long userId, String userLogin, String encrytedPassword, String userName, Integer userGender, Date userBDay, String userHometown, String userCompany) {
         this.userId = userId;
         this.userLogin = userLogin;
         this.encrytedPassword = encrytedPassword;
         this.userName = userName;
+        this.userGender = userGender;
         this.userBDay = userBDay;
         this.userHometown = userHometown;
         this.userCompany = userCompany;
@@ -63,10 +60,17 @@ public class AppUser{
         this.userName = userName;
     }
 
+    public Integer getUserGender() {
+        return userGender;
+    }
+    public void setUserGender(Integer userGender) {
+        this.userGender = userGender;
+    }
+
     public Date getUserBDay() {
         return userBDay;
     }
-    public void setUserName(Date userBDay) {
+    public void setUserBDay(Date userBDay) {
         this.userBDay = userBDay;
     }
 

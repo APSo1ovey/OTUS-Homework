@@ -9,13 +9,39 @@
 
 
 <h2>Your Personal Page</h2>
-<h3>Welcome : <span th:utext="${#request.userPrincipal.name}"></span></h3>
-<b>This is protected page!</b>
-
 <br/><br/>
-
-<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
-
+<div class="panel-group" style="margin-top:40px">
+    <div>
+        <div>
+            <h2>Information about you</h2>
+            <span th:object="${currentUser}">
+                    <table border="1">
+                        <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Birthday</th>
+                            <th>Hometown</th>
+                            <th>Company</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td th:text="*{userLogin}"></td>
+                            <td th:text="*{userName}"></td>
+                            <td th:if="*{userGender == 0}">Male</td>
+                            <td th:unless="*{userGender == 0}">Female</td>
+                            <td th:text="*{userBDay}"></td>
+                            <td th:text="*{userHometown}"></td>
+                            <td th:text="*{userCompany}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </span>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>

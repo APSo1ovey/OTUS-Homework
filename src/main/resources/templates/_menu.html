@@ -1,14 +1,22 @@
 <div xmlns:th="http://www.thymeleaf.org"
      style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
+    <style>
+        ul.hr {
+            margin: 0;
+            padding: 4px;
+        }
+        ul.hr li {
+            display: inline;
+            margin-right: 5px;
+            border: 1px solid #000;
+            padding: 3px;
+        }
+    </style>
+        <ul class="hr">
+            <a th:href="@{/}"><li>Home</li></a>
 
-    <a th:href="@{/}">Home</a>
+            <a th:if="${#request.userPrincipal != null}" th:href="@{/userInfo}"><li>Personal Page</li></a>
 
-    | &nbsp;
-
-    <a th:if="${#request.userPrincipal != null}" th:href="@{/userInfo}">Personal Page</a>
-
-    | &nbsp;
-
-    <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
-
+            <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}"><li>Logout</li></a>
+    </ul>
 </div>

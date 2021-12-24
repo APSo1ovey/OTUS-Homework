@@ -32,20 +32,19 @@ public class RegistrationController {
     public ModelAndView createNewUser(@Valid AppUser user, BindingResult bindingResult) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         AppUser userExists = userService.findUserByUserName(user.getUserLogin());
-//        User userExists = user;
+
         if (userExists != null) {
             bindingResult
                     .rejectValue("username", "error.user",
-                            "Пользователь с таким именем уже существует");
+                            "User with the same login already exists");
         }
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registrationPage");
         } else {
             userService.saveUser(user);
-            modelAndView.addObject("successMessage", "Пользователь зарегистрирован");
+            modelAndView.addObject("successMessage", "Successful registration");
             modelAndView.addObject("user", new AppUser());
             modelAndView.setViewName("registrationPage");
-
         }
         return modelAndView;
     }

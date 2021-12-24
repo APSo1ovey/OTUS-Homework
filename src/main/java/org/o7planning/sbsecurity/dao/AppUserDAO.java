@@ -34,8 +34,8 @@ public class AppUserDAO extends JdbcDaoSupport {
     }
 
     public int saveUser(AppUser user) throws Exception{
-        String sql = "insert into table (userLogin, encrytedPassword, userName, userBDay, userHometown, userCompany) VALUES(?,?,?,?,?,?)";
-        return this.getJdbcTemplate().update(sql,user.getUserLogin(), user.getEncrytedPassword(), user.getUserName(), user.getUserBDay(), user.getUserHometown(), user.getUserCompany());
+        String sql = "insert into APP_USER (USER_LOGIN, ENCRYTED_PASSWORD, USER_NAME, USER_GENDER, USER_BIRTHDAY, USER_HOMETOWN, USER_COMPANY) VALUES(?,?,?,?,?,?,?)";
+        return this.getJdbcTemplate().update(sql,user.getUserLogin(), user.getEncrytedPassword(), user.getUserName(), user.getUserGender(), user.getUserBDay(), user.getUserHometown(), user.getUserCompany());
     }
 
 }
